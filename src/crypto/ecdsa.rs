@@ -1,4 +1,4 @@
-use ring::{rand, signature};
+use aws_lc_rs::{rand, signature};
 
 use crate::algorithms::Algorithm;
 use crate::errors::Result;
@@ -32,7 +32,7 @@ pub fn sign(
     message: &[u8],
 ) -> Result<String> {
     let rng = rand::SystemRandom::new();
-    let signing_key = signature::EcdsaKeyPair::from_pkcs8(alg, key, &rng)?;
+    let signing_key = signature::EcdsaKeyPair::from_pkcs8(alg, key)?;
     let out = signing_key.sign(&rng, message)?;
     Ok(b64_encode(out))
 }

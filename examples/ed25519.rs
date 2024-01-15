@@ -1,7 +1,7 @@
+use aws_lc_rs::signature::{Ed25519KeyPair, KeyPair};
 use jsonwebtoken::{
     decode, encode, get_current_timestamp, Algorithm, DecodingKey, EncodingKey, Validation,
 };
-use ring::signature::{Ed25519KeyPair, KeyPair};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
